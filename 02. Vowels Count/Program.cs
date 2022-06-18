@@ -28,5 +28,28 @@ namespace _02._Vowels_Count
             }
             Console.WriteLine(countVowels);
         }
+        -----------------------------------------------------------------------------------------
+        //        static void Main(string[] args)
+        //        {
+        //            string input = Console.ReadLine();
+
+        //            Console.WriteLine(PrintVowels(input));
+
+        //        }
+
+        //        static int PrintVowels(string input)
+        //        {
+        //            char[] arrVowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
+        //            int countVowels = 0;
+
+        //            foreach (var ch in input.ToLower())
+        //            {
+        //                if (arrVowels.Contains(ch))
+        //                {
+        //                    countVowels++;
+        //                }
+        //            }
+        //            return countVowels;
+        //        }
     }
 }
