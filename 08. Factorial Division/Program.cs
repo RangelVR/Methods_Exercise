@@ -15,7 +15,6 @@ namespace _08._Factorial_Division
         {
             decimal sum1 = 1;
             decimal sum2 = 1;
-
             
             if (n1 != 0 && n2 != 0)
             {
