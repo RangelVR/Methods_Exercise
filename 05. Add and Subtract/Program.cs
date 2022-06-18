@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace _05._Add_and_Subtract
 {
@@ -9,13 +9,13 @@ namespace _05._Add_and_Subtract
             int n1 = int.Parse(Console.ReadLine());
             int n2 = int.Parse(Console.ReadLine());
             int n3 = int.Parse(Console.ReadLine());
-            Console.WriteLine(PrintResult(n1, n2, n3));
+            PrintResult(n1, n2, n3);
         }
 
-        static int PrintResult(int n1, int n2, int n3)
+        static void PrintResult(int n1, int n2, int n3)
         {
             int sum = n1 + n2 - n3;
-            return sum;
+            Console.WriteLine(sum);
         }
     }
 }
