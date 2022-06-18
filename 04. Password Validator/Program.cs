@@ -24,8 +24,7 @@ namespace _04._Password_Validator
                 if (!char.IsDigit(ch) && !char.IsLetter(ch))
                 {
                     digitOrLetter++;
-                }
-                
+                }               
             }
 
             if (pass.Length < 6 || pass.Length > 10)
