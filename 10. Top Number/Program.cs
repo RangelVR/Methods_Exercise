@@ -21,7 +21,6 @@ namespace _10._Top_Number
                     {
                         Console.WriteLine(i);
                     }
-                  
                 }
             }
         }
@@ -39,7 +38,6 @@ namespace _10._Top_Number
                 return true;
             }
             return false;
-
         }
 
         static bool IsOddNumber(int i)
@@ -62,3 +60,54 @@ namespace _10._Top_Number
         
     }
 }
+----------------------------------------------------------------------------------------
+    
+    //using System;
+//using System.Linq;
+
+//namespace _10._Top_Number
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            string num = Console.ReadLine();
+//            GetSumOdDigits(num);
+//        }
+
+//        static void GetSumOdDigits(string num)
+//        {
+//            for (int i = 17; i <= int.Parse(num); i++)
+//            {
+//                string lenght = i.ToString();
+//                int[] arr = new int[lenght.Length];
+//                bool isOddDigit = false;
+
+//                for (int k = 0; k < arr.Length; k++)
+//                {
+//                    string digit = i.ToString();
+//                    arr[k] = digit[k] - '0';
+//                }
+//                int sum = arr.Sum();
+
+//                foreach (var digit in arr)
+//                {
+//                    if (digit % 2 != 0)
+//                    {
+//                        isOddDigit = true;
+//                        break;
+//                    }
+//                }
+
+//                if (sum % 8 == 0)
+//                {
+//                    if (isOddDigit)
+//                    {
+//                        Console.WriteLine(i);
+//                    }
+//                }
+
+//            }
+//        }
+//    }
+//}
