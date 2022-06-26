@@ -7,236 +7,330 @@ namespace _11._Array_Manipulator
     {
         static void Main(string[] args)
         {
-            int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            string command = Console.ReadLine();
 
-            while (true)
+            if (command == "end")
             {
-                string[] command = Console.ReadLine().Split().ToArray();
-                int[] exchArr = arr;
-                if (command[0] == "end")
-                {
-                    break;
-                }
-
-                if (command[0] == "exchange")
-                {
-                    GetExchange(arr, command, exchArr);
-                }
-                else if (command[0] == "max")
-                {
-                    GetMaxEvenOddIndex(arr, command);
-                }
-                else if (command[0] == "min")
-                {
-                    
-                }
-                else if (command[0] == "first")
-                {
-                    GetFirstEvenOdd(arr, command);
-                }
-                else if (command[0] == "last")
-                {
-                   
-                }
-            }
-            Console.WriteLine($"[{string.Join(" ,", arr)}]");
-
-        }
-
-        static int[] GetExchange(int[] arr, string[] command, int[] exchArr)
-        {
-            int index = (int.Parse(command[1]));
-
-            if (index >= arr.Length - 1)
-            {
-                Console.WriteLine("Invalid index");
+                Console.WriteLine($"[{string.Join(", ", numbers)}]");
             }
             else
             {
-                int counter = 0;
-                int[] firstHalf = new int[index + 1];
-                int[] secondHalf = new int[arr.Length - firstHalf.Length];
+                while (command != "end")
+                {
+                    string[] commandOfAll = command.Split();
+                    string mainComm = commandOfAll[0];
 
-                for (int i = 0 ; i <= index; i++)
-                {
-                    firstHalf[i] = arr[i];
-                }
-                for (int i = index + 1; i < arr.Length; i++)
-                {
-                    secondHalf[counter] = arr[i];
-                    counter++;
-                }
-                for (int i = 0; i < secondHalf.Length; i++)
-                {
-                    exchArr[i] = secondHalf[i];
-                }
-                counter = 0;
-                for (int i = secondHalf.Length; i < exchArr.Length; i++)
-                {
-                    exchArr[i] = firstHalf[counter];
-                    counter++;
-                }
-            }
-            arr = exchArr;
-            return arr;
-        }
-
-        static void GetMaxEvenOddIndex(int[] arr, string[] command)
-        {
-            int index = 0;
-            int counter = 0;
-            string comm = command[1];
-            if (comm == "even")
-            {
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    int num = arr[i];
-                    if (num % 2 == 0)
+                    if (mainComm == "exchange")
                     {
-                        if (num.CompareTo(index) > 0)
+                        int index = int.Parse(commandOfAll[1]);
+                        if (index >= 0 && index <= numbers.Length - 1)
                         {
-                            index = i;
-                            counter++;
+                            GetEchangeNums(index, numbers);
                         }
-                    }
-                }
-            }
-            else if (comm == "odd")
-            {
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    int num = arr[i];
-                    if (num % 2 != 0)
-                    {
-                        if (num.CompareTo(index) > 0)
+                        else
                         {
-                            index = i;
-                            counter++;
+                            Console.WriteLine("Invalid index");
                         }
-                    }
-                }
-            }
-            if (counter != 0)
-            {
-                Console.WriteLine(index);
-            }
-            else
-            {
-                Console.WriteLine("No matches");
-            }
-        }
 
-        static void GetMinEvenIndex(int[] arr, string[] command)
-        {
-            int indexMinEven = 0;
-            int counterMinEven = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                int num = arr[i];
-                if (num % 2 == 0)
-                {
-                    if (num.CompareTo(indexMinEven) < 0)
-                    {
-                        indexMinEven = i;
-                        counterMinEven++;
                     }
+                    else if (mainComm == "max")
+                    {
+                        string subCommEvenOrOdd = commandOfAll[1];
+                        Console.WriteLine(PrintMaxIndexIvenOrOdd(subCommEvenOrOdd, numbers));
+                    }
+                    else if (mainComm == "min")
+                    {
+                        string subCommEvenOrOdd = commandOfAll[1];
+                        Console.WriteLine(PrintMinIndexIvenOrOdd(subCommEvenOrOdd, numbers));
+                    }
+                    else if (mainComm == "first")
+                    {
+                        int count = int.Parse(commandOfAll[1]);
+                        string commEvenOrOdd = commandOfAll[2];
+                        PrintFirstCountEvenOrOddNums(count, commEvenOrOdd, numbers);
+                    }
+                    else if (mainComm == "last")
+                    {
+                        int count = int.Parse(commandOfAll[1]);
+                        string commEvenOrOdd = commandOfAll[2];
+                        PrintLastCountEvenOrOddNums(count, commEvenOrOdd, numbers);
+                    }
+                    command = Console.ReadLine();
                 }
-            }
-            if (counterMinEven != 0)
-            {
-                Console.WriteLine(indexMinEven);
-            }
-            else
-            {
-                Console.WriteLine("No matches");
-            }
-        }
-
-        static void GetMinOddIndex(int[] arr, string[] command)
-        {
-            int indexMinOdd = 0;
-            int counterMinOdd = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                int num = arr[i];
-                if (num % 2 != 0)
-                {
-                    if (num.CompareTo(indexMinOdd) < 0)
-                    {
-                        indexMinOdd = i;
-                        counterMinOdd++;
-                    }
-                }
-            }
-            if (counterMinOdd != 0)
-            {
-                Console.WriteLine(indexMinOdd);
-            }
-            else
-            {
-                Console.WriteLine("No matches");
-            }
-        }
-
-        static void GetFirstEvenOdd(int[] arr, string[] command)
-        {
-            int countCommand = int.Parse(command[1]);
-            string comm = command[2];
-            int[] arrEvOdd = new int[countCommand];
-            int counter = 0;
-
-            if (countCommand > arr.Length)
-            {
-                Console.WriteLine("Invalid count");
-            }
-            else
-            {
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    if (comm == "even")
-                    {
-                        if (arr[i] % 2 == 0 && counter < countCommand)
-                        {
-                            arrEvOdd[counter] = arr[i];
-                            counter++;
-                        }
-                    }
-                    else if (comm == "odd")
-                    {
-                        if (arr[i] % 2 != 0 && counter < countCommand)
-                        {
-                            arrEvOdd[counter] = arr[i];
-                            counter++;
-                        }
-                    }
-                    
-                }
-                Console.Write("[");
-                for (int i = 0; i < counter; i++)
-                {
-                    if (i < counter - 1)
-                    {
-                        Console.Write(arrEvOdd[i] + "," + " ");
-                    }
-                    else if (i == counter - 1)
-                    {
-                        Console.Write(arrEvOdd[i]);
-                    }
-                }
-                Console.Write("]");
+                
+                Console.WriteLine($"[{string.Join(", ", numbers)}]");
+                
             }
             
         }
 
 
-        static void GetLastEven(int[] arr, string[] command)
+        static void GetEchangeNums(int index, int[] numbers)
         {
+            int[] firstHalfOfNums = new int[index + 1];
+            int counter = numbers.Length - firstHalfOfNums.Length;
 
+            for (int i = 0; i <= index; i++)
+            {
+                firstHalfOfNums[i] = numbers[i]; 
+            }
+            for (int j = 0; j <= index; j++)
+            {
+                for (int k = 0; k < numbers.Length - 1; k++)
+                {
+                    numbers[k] = numbers[k + 1];
+                }
+            }
+            for (int i = 0; i < firstHalfOfNums.Length; i++)
+            {
+                numbers[counter] = firstHalfOfNums[i];
+                counter++;
+            }
+           
         }
 
-        static void GetLastOdd(int[] arr, string[] command)
-        {
 
+        static string PrintMaxIndexIvenOrOdd(string subCommand, int[] numbers) 
+        {
+            if (subCommand == "even")
+            {
+                int maxNum = int.MinValue;
+                int indexMaxNum = -1;
+                bool index = false;
+
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    int num = numbers[i];
+                    if (num % 2 == 0)
+                    {
+                        if (num >= maxNum)
+                        {
+                            maxNum = num;
+                            indexMaxNum = i;
+                            index = true;
+                        }
+                    }
+                }
+                if (index)
+                {
+                    return indexMaxNum.ToString();
+                }
+            }
+            else if (subCommand == "odd")
+            {
+                int maxNum = int.MinValue;
+                int indexMinNum = -1;
+                bool index = false;
+
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    int num = numbers[i];
+                    if (num % 2 != 0)
+                    {
+                        if (num >= maxNum)
+                        {
+                            maxNum = num;
+                            indexMinNum = i;
+                            index = true;
+                        }
+                    }
+                }
+                if (index)
+                {
+                    return indexMinNum.ToString();
+                }
+            }
+            return "No matches";
+        }
+
+
+        static string PrintMinIndexIvenOrOdd(string subCommand, int[] numbers)
+        {
+            if (subCommand == "even")
+            {
+                int minNum = int.MaxValue;
+                int indexOfMinNum = -1;
+                bool index = false;
+
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    int num = numbers[i];
+                    if (num % 2 == 0)
+                    {
+                        if (num <= minNum)
+                        {
+                            minNum = num;
+                            indexOfMinNum = i;
+                            index = true;
+                        }
+                    }
+                }
+                if (index)
+                {
+                    return indexOfMinNum.ToString();
+                }
+            }
+            else if (subCommand =="odd")
+            {
+                int minNum = int.MaxValue;
+                int indexOfMinNum = -1;
+                bool index = false;
+
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    int num = numbers[i];
+                    if (num % 2 != 0)
+                    {
+                        if (num <= minNum)
+                        {
+                            minNum = num;
+                            indexOfMinNum = i;
+                            index = true;
+                        }
+                    }
+                }
+                if (index)
+                {
+                    return indexOfMinNum.ToString();
+                }
+            }
+            return "No matches";
+        }
+
+
+        static void PrintFirstCountEvenOrOddNums(int count, string commEvOrOdd, int[] numbers)
+        {
+            if (count > numbers.Length)
+            {
+                Console.WriteLine("Invalid count");
+            }
+            else
+            {
+                if (commEvOrOdd == "even")
+                {
+                    int counter = 0;
+                    int[] evenNums = new int[count];
+
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        int num = numbers[i];
+                        if (num % 2 == 0)
+                        {
+                            if (counter < count)
+                            {
+                                evenNums[counter] = num;
+                                counter++;
+                            }
+                        }
+                    }
+
+                    PrintCountEvenOrOdNums(counter, evenNums);
+                }
+                else if (commEvOrOdd == "odd")
+                {
+                    int counter = 0;
+                    int[] oddNums = new int[count];
+
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        int num = numbers[i];
+                        if (num % 2 != 0)
+                        {
+                            if (counter < count)
+                            {
+                                oddNums[counter] = num;
+                                counter++;
+                            }
+                        }
+                    }
+
+                    PrintCountEvenOrOdNums(counter, oddNums);
+                }
+
+            }
+        }
+
+
+        static void PrintLastCountEvenOrOddNums(int count, string commEvenOrOdd, int[] numbers) 
+        {
+            if (count > numbers.Length)
+            {
+                Console.WriteLine("Invalid count");
+            }
+            else
+            {
+                if (commEvenOrOdd == "even")
+                {
+                    int counter = 0;
+                    int[] evenNums = new int[count];
+
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        int num = numbers[i];
+                        if (num % 2 == 0)
+                        {
+                            if (counter < count)
+                            {
+                                if (numbers.Sum() > 0)
+                                {
+                                    evenNums[counter] = numbers[i];
+                                    counter++;
+                                }
+                                
+                            }
+                        }
+                    }
+
+                    PrintCountEvenOrOdNums(counter, evenNums);
+                }
+                else if (commEvenOrOdd == "odd")
+                {
+                    int counter = 0;
+                    int[] oddNums = new int[count];
+
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        int num = numbers[i];
+                        if (num % 2 != 0)
+                        {
+                            if (counter < count)
+                            {
+                                oddNums[counter] = numbers[i];
+                                counter++;
+                            }
+                        }
+                    }
+
+                    PrintCountEvenOrOdNums(counter, oddNums);
+                }
+            }
+        }
+
+
+        static void PrintCountEvenOrOdNums(int counter, int[] evenOrOddnums) 
+        {
+            int counterOfNums = 0;
+
+            if (counter == 0)
+            {
+                Console.WriteLine("[]");
+            }
+            else
+            {
+                Console.Write("[");
+                for (int i = 0; i < counter; i++)
+                {
+                    if (counterOfNums > 0)
+                    {
+                        Console.Write(", ");
+                    }
+                    Console.Write(evenOrOddnums[i]);
+                    counterOfNums++;
+                }
+                Console.Write("]");
+                Console.WriteLine();
+            }
         }
     }
 }
