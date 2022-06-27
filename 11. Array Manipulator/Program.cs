@@ -58,11 +58,11 @@ namespace _11._Array_Manipulator
                     }
                     command = Console.ReadLine();
                 }
-                
+
                 Console.WriteLine($"[{string.Join(", ", numbers)}]");
-                
+
             }
-            
+
         }
 
 
@@ -73,7 +73,7 @@ namespace _11._Array_Manipulator
 
             for (int i = 0; i <= index; i++)
             {
-                firstHalfOfNums[i] = numbers[i]; 
+                firstHalfOfNums[i] = numbers[i];
             }
             for (int j = 0; j <= index; j++)
             {
@@ -87,11 +87,11 @@ namespace _11._Array_Manipulator
                 numbers[counter] = firstHalfOfNums[i];
                 counter++;
             }
-           
+
         }
 
 
-        static string PrintMaxIndexIvenOrOdd(string subCommand, int[] numbers) 
+        static string PrintMaxIndexIvenOrOdd(string subCommand, int[] numbers)
         {
             if (subCommand == "even")
             {
@@ -171,7 +171,7 @@ namespace _11._Array_Manipulator
                     return indexOfMinNum.ToString();
                 }
             }
-            else if (subCommand =="odd")
+            else if (subCommand == "odd")
             {
                 int minNum = int.MaxValue;
                 int indexOfMinNum = -1;
@@ -201,6 +201,8 @@ namespace _11._Array_Manipulator
 
         static void PrintFirstCountEvenOrOddNums(int count, string commEvOrOdd, int[] numbers)
         {
+            bool haveAnumbers = false;
+
             if (count > numbers.Length)
             {
                 Console.WriteLine("Invalid count");
@@ -221,11 +223,12 @@ namespace _11._Array_Manipulator
                             {
                                 evenNums[counter] = num;
                                 counter++;
+                                haveAnumbers = true;
                             }
                         }
                     }
 
-                    PrintCountEvenOrOdNums(counter, evenNums);
+                    PrintCountEvenOrOdNums(counter, evenNums, count, haveAnumbers);
                 }
                 else if (commEvOrOdd == "odd")
                 {
@@ -241,19 +244,22 @@ namespace _11._Array_Manipulator
                             {
                                 oddNums[counter] = num;
                                 counter++;
+                                haveAnumbers = true;
                             }
                         }
                     }
 
-                    PrintCountEvenOrOdNums(counter, oddNums);
+                    PrintCountEvenOrOdNums(counter, oddNums, count, haveAnumbers);
                 }
 
             }
         }
 
 
-        static void PrintLastCountEvenOrOddNums(int count, string commEvenOrOdd, int[] numbers) 
+        static void PrintLastCountEvenOrOddNums(int count, string commEvenOrOdd, int[] numbers)
         {
+            bool haveAnumbers = false;
+
             if (count > numbers.Length)
             {
                 Console.WriteLine("Invalid count");
@@ -262,74 +268,84 @@ namespace _11._Array_Manipulator
             {
                 if (commEvenOrOdd == "even")
                 {
-                    int counter = 0;
+                    int counter = count - 1;
                     int[] evenNums = new int[count];
 
-                    for (int i = 0; i < numbers.Length; i++)
+                    for (int i = numbers.Length - 1; i >= 0 ; i--)
                     {
                         int num = numbers[i];
                         if (num % 2 == 0)
                         {
-                            if (counter < count)
+                            if (counter > -1)
                             {
                                 if (numbers.Sum() > 0)
                                 {
                                     evenNums[counter] = numbers[i];
-                                    counter++;
+                                    counter--;
+                                    haveAnumbers = true;
                                 }
-                                
+
                             }
                         }
                     }
 
-                    PrintCountEvenOrOdNums(counter, evenNums);
+                    PrintCountEvenOrOdNums(counter, evenNums, count, haveAnumbers);
                 }
                 else if (commEvenOrOdd == "odd")
                 {
-                    int counter = 0;
+                    int counter = count - 1;
                     int[] oddNums = new int[count];
 
-                    for (int i = 0; i < numbers.Length; i++)
+                    for (int i = numbers.Length - 1; i >= 0; i--)
                     {
                         int num = numbers[i];
                         if (num % 2 != 0)
                         {
-                            if (counter < count)
+                            if (counter > -1)
                             {
-                                oddNums[counter] = numbers[i];
-                                counter++;
+                                if (numbers.Sum() > 0)
+                                {
+                                    oddNums[counter] = numbers[i];
+                                    counter--;
+                                    haveAnumbers = true;
+                                }
+
                             }
                         }
                     }
 
-                    PrintCountEvenOrOdNums(counter, oddNums);
+                    PrintCountEvenOrOdNums(counter, oddNums, count, haveAnumbers);
                 }
             }
         }
 
 
-        static void PrintCountEvenOrOdNums(int counter, int[] evenOrOddnums) 
+        static void PrintCountEvenOrOdNums(int counter, int[] evenOrOddnums, int count, bool haveAnumbers)
         {
             int counterOfNums = 0;
 
-            if (counter == 0)
-            {
-                Console.WriteLine("[]");
-            }
-            else
+            if (haveAnumbers)
             {
                 Console.Write("[");
-                for (int i = 0; i < counter; i++)
+                for (int i = 0; i < count; i++)
                 {
-                    if (counterOfNums > 0)
+                    if (counterOfNums > 0 && evenOrOddnums[i] != 0)
                     {
                         Console.Write(", ");
                     }
-                    Console.Write(evenOrOddnums[i]);
-                    counterOfNums++;
+                    if (evenOrOddnums[i] != 0)
+                    {
+                        Console.Write(evenOrOddnums[i]);
+                        counterOfNums++;
+                    }
+                    
                 }
                 Console.Write("]");
                 Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("[]");
             }
         }
     }
