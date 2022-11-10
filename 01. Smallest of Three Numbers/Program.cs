@@ -55,12 +55,20 @@ namespace _01._Smallest_of_Three_Numbers
 
         //static void Main(string[] args)
         //{
-        //    int smolestNum = int.MaxValue;
+        //    int[] arr = new int[3];
         //    for (int i = 0; i < 3; i++)
         //    {
         //        int n = int.Parse(Console.ReadLine());
-        //        int[] arr = new int[3];
         //        arr[i] = n;
+        //    }
+        //    GetSmolestNum(arr);
+        //}
+
+        //static void GetSmolestNum(int[] arr)
+        //{
+        //    int smolestNum = int.MaxValue;
+        //    for (int i = 0; i < 3; i++)
+        //    {
         //        if (arr[i] < smolestNum)
         //        {
         //            smolestNum = arr[i];
