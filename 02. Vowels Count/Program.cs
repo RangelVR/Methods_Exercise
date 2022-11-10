@@ -51,5 +51,26 @@ namespace _02._Vowels_Count
         //            }
         //            return countVowels;
         //        }
+            
+        ------------------------------------------------------------------------------------------------------
+            
+        //static void Main(string[] args)
+        //{
+        //    string inputStr = Console.ReadLine();
+        //    PrintCountVowels(inputStr);
+        //}
+
+        //static void PrintCountVowels(string input)
+        //{
+        //    int counterVowels = 0;
+        //    foreach (var ch in input.ToLower())
+        //    {
+        //        if (ch == 'a' || ch == 'o' || ch == 'u' || ch == 'e' || ch == 'i')
+        //        {
+        //            counterVowels++;
+        //        }
+        //    }
+        //    Console.WriteLine(counterVowels);
+        //}
     }
 }
