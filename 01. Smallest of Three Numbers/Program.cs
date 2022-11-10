@@ -55,32 +55,18 @@ namespace _01._Smallest_of_Three_Numbers
 
         //static void Main(string[] args)
         //{
-        //    int[] nums = new int [3];
-        //    int theSmallNum = 0;
-
-        //    GetAllNums(nums);
-        //    Console.WriteLine(PrintTheSmallestNum(nums, theSmallNum));
-        //}
-
-        //static void GetAllNums(int[] allNums) 
-        //{
+        //    int smolestNum = int.MaxValue;
         //    for (int i = 0; i < 3; i++)
         //    {
         //        int n = int.Parse(Console.ReadLine());
-        //        allNums[i] = n;
-        //    }
-        //}
-        //static int PrintTheSmallestNum(int[] nums, int theSmallNum) 
-        //{
-        //    theSmallNum = nums[0];
-        //    for (int i = 0; i < 3; i++)
-        //    {
-        //        if (nums[i] < theSmallNum)
+        //        int[] arr = new int[3];
+        //        arr[i] = n;
+        //        if (arr[i] < smolestNum)
         //        {
-        //            theSmallNum = nums[i];
+        //            smolestNum = arr[i];
         //        }
         //    }
-        //    return theSmallNum;
+        //    Console.WriteLine(smolestNum);
         //}
 
 
