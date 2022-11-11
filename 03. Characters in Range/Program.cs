@@ -1,54 +1,54 @@
-﻿using System;
+using System;
+using System.Linq;
 
-namespace _03._Characters_in_Range
+namespace _11._Array_Manipulator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            char begin = char.Parse(Console.ReadLine());
-            char end = char.Parse(Console.ReadLine());
-            PrintCharsBetwin(begin, end);
+            char ch1 = char.Parse(Console.ReadLine());
+            char ch2 = char.Parse(Console.ReadLine());
+
+            PrintSequenceBetwinCh1AndCh2(ch1, ch2);
         }
 
-        static void PrintCharsBetwin(char start, char stop)
+        static void PrintSequenceBetwinCh1AndCh2(char ch1, char ch2)
         {
-            if (start > stop)
+          
+            int start = Math.Min(ch1, ch2);
+            int stop = Math.Max(ch1, ch2);
+            for (int i = start + 1; i < stop; i++)
             {
-                for (char i = (char)(stop + 1); i < start; i++)
-                {
-                    Console.Write(i + " ");
-                }
+                Console.Write((char)i + " ");
             }
-            else
-            {
-                for (char i = (char)(start + 1); i < stop; i++)
-                {
-                    Console.Write(i + " ");
-                }
-            }
-            
         }
----------------------------------------------------------------------------------------------------------
+        ========================================================================================================
         //static void Main(string[] args)
         //{
-        //    char startChar = char.Parse(Console.ReadLine());
-        //    char stopChar = char.Parse(Console.ReadLine());
+        //    char ch1 = char.Parse(Console.ReadLine());
+        //    char ch2 = char.Parse(Console.ReadLine());
 
-        //    PrintTheCharsBetweenTwoChars(startChar, stopChar);
+        //    PrintSequenceBetwinCh1AndCh2(ch1, ch2);
         //}
 
-        //static void PrintTheCharsBetweenTwoChars(char firstCharacter, char secondCharacter)
+        //static void PrintSequenceBetwinCh1AndCh2(char ch1, char ch2)
         //{
-
-        //    int startCh = Math.Min(firstCharacter, secondCharacter);
-        //    int stopCh = Math.Max(firstCharacter, secondCharacter);
-
-        //    for (int i = ++startCh; i < stopCh; i++)
+        //    if (ch1 > ch2)
         //    {
-        //        Console.Write((char)i + " ");
+        //        for (int i = ch2 + 1; i < ch1; i++)
+        //        {
+        //            Console.Write((char)i + " ");
+        //        }
         //    }
-
+        //    else
+        //    {
+        //        for (int i = ch1 + 1; i < ch2; i++)
+        //        {
+        //            Console.Write((char)i + " ");
+        //        }
+        //    }
         //}
+
     }
 }
