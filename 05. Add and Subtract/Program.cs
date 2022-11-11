@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace _11._Array_Manipulator
+namespace _05. Add and Subtract
 {
     class Program
     {
