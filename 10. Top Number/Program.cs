@@ -16,7 +16,7 @@ namespace _10.Top_Number
 
         static void PrintTopNum(int i)
         {
-            if (GetSumOfN(i) == 8 || GetSumOfN(i) % 8 == 0)
+            if (GetSumOfN(i) % 8 == 0)
             {
                 if (GetCountOdd(i) > 0)
                 {
