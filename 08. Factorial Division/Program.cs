@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace _08._Factorial_Division
+namespace _08.Factorial_Division
 {
     class Program
     {
@@ -8,31 +8,29 @@ namespace _08._Factorial_Division
         {
             int n1 = int.Parse(Console.ReadLine());
             int n2 = int.Parse(Console.ReadLine());
-            PringtResult(n1, n2);
+         
+            Console.WriteLine($"{PrintFactorialN1(n1) / PrintFactorialN2(n2):f2}");
         }
 
-        static void PringtResult(decimal n1, decimal n2) 
+        static decimal PrintFactorialN1(int n1) 
         {
             decimal sum1 = 1;
-            decimal sum2 = 1;
-            
-            if (n1 != 0 && n2 != 0)
+            for (int i = 2; i <= n1; i++)
             {
-                for (decimal i = 1; i < n1; i++)
-                {
-                    sum1 *= i + 1;
-                }
-                for (decimal i = 1; i < n2; i++)
-                {
-                    sum2 *= i + 1;
-                }
-                Console.WriteLine($"{(sum1 / sum2):f2}");
+                sum1 *= i;
             }
-            else
-            {
-                Console.WriteLine(0);
-            }
-            
+            return sum1; 
         }
+
+        static decimal PrintFactorialN2(int n2)
+        {
+            decimal sum2 = 1;
+            for (int i = 2; i <= n2; i++)
+            {
+                sum2 *= i;
+            }
+            return sum2;
+        }
+
     }
 }
