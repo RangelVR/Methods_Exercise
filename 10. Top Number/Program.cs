@@ -1,63 +1,56 @@
-﻿using System;
-using System.Linq;
+using System;
 
-namespace _10._Top_Number
+namespace _10.Top_Number
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int num = int.Parse(Console.ReadLine());
-            PrintTopNum(num);
+            int stopN = int.Parse(Console.ReadLine());
+
+            for (int i = 17; i <= stopN; i++)
+            {
+                PrintTopNum(i);
+            }
         }
 
-        static void PrintTopNum(int num)
+        static void PrintTopNum(int i)
         {
-            for (int i = 17; i <= num; i++)
+            if (GetSumOfN(i) == 8 || GetSumOfN(i) % 8 == 0)
             {
-                if (GetSumDigits(i))
+                if (GetCountOdd(i) > 0)
                 {
-                    if (IsOddNumber(i))
-                    {
-                        Console.WriteLine(i);
-                    }
+                    int topN = i;
+                    Console.WriteLine(topN);
                 }
             }
         }
 
-        static bool GetSumDigits(int num)
+        static int GetSumOfN(int n)
         {
-            int sumDigits = 0;
-            while (num != 0)
+            int sum = 0;
+            while (n != 0)
             {
-                sumDigits += num % 10;
-                num /= 10;
+                sum += n % 10;
+                n = n / 10;
             }
-            if (sumDigits % 8 == 0)
-            {
-                return true;
-            }
-            return false;
+            return sum;
         }
 
-        static bool IsOddNumber(int i)
+        static int GetCountOdd(int i)
         {
-            for (int k = i; k <= i; k++)
+            int counter = 0;
+            while (i != 0)
             {
-                int oddNum = 0;
-                while (i != 0)
+                int lastDigit = i % 10;
+                if (lastDigit % 2 != 0)
                 {
-                    oddNum += i % 10;
-                    i /= 10;
-                    if (i % 2 != 0)
-                    {
-                        return true;
-                    }
+                    counter++;
                 }
+                i = i / 10;
             }
-            return false;
+            return counter;
         }
-        
     }
 }
 ----------------------------------------------------------------------------------------
@@ -114,58 +107,64 @@ namespace _10._Top_Number
  ======================================================================================================================
     
 //using System;
+//using System.Linq;
 
-//namespace _09.Palindrome_Integers
+//namespace _10._Top_Number
 //{
 //    class Program
 //    {
 //        static void Main(string[] args)
 //        {
-//            int stopN = int.Parse(Console.ReadLine());
-
-//            for (int i = 17; i <= stopN; i++)
-//            {
-//                PrintTopNum(i);
-//            }
+//            int num = int.Parse(Console.ReadLine());
+//            PrintTopNum(num);
 //        }
 
-//        static void PrintTopNum(int i)
+//        static void PrintTopNum(int num)
 //        {
-//            if (GetSumOfN(i) == 8 || GetSumOfN(i) % 8 == 0)
+//            for (int i = 17; i <= num; i++)
 //            {
-//                if (GetCountOdd(i) > 0)
+//                if (GetSumDigits(i))
 //                {
-//                    int topN = i;
-//                    Console.WriteLine(topN);
+//                    if (IsOddNumber(i))
+//                    {
+//                        Console.WriteLine(i);
+//                    }
 //                }
 //            }
 //        }
 
-//        static int GetSumOfN(int n) 
+//        static bool GetSumDigits(int num)
 //        {
-//            int sum = 0;
-//            while (n != 0)
+//            int sumDigits = 0;
+//            while (num != 0)
 //            {
-//                sum += n % 10;
-//                n = n / 10;
+//                sumDigits += num % 10;
+//                num /= 10;
 //            }
-//            return sum;
+//            if (sumDigits % 8 == 0)
+//            {
+//                return true;
+//            }
+//            return false;
 //        }
 
-//        static int GetCountOdd(int i) 
+//        static bool IsOddNumber(int i)
 //        {
-//            int counter = 0;
-//            while (i != 0)
+//            for (int k = i; k <= i; k++)
 //            {
-//                int lastDigit = i % 10;
-//                if (lastDigit % 2 != 0)
+//                int oddNum = 0;
+//                while (i != 0)
 //                {
-//                    counter++;
+//                    oddNum += i % 10;
+//                    i /= 10;
+//                    if (i % 2 != 0)
+//                    {
+//                        return true;
+//                    }
 //                }
-//                i = i / 10;
 //            }
-//            return counter;
+//            return false;
 //        }
+
 //    }
 //}
-   
