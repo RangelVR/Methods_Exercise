@@ -46,6 +46,7 @@ namespace _10.Top_Number
                 if (lastDigit % 2 != 0)
                 {
                     counter++;
+                    break;
                 }
                 i = i / 10;
             }
