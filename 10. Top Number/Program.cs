@@ -62,7 +62,7 @@ namespace _10._Top_Number
 }
 ----------------------------------------------------------------------------------------
     
-    //using System;
+//using System;
 //using System.Linq;
 
 //namespace _10._Top_Number
@@ -111,3 +111,62 @@ namespace _10._Top_Number
 //        }
 //    }
 //}
+ ======================================================================================================================
+    
+//using System;
+
+//namespace _09.Palindrome_Integers
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            int stopN = int.Parse(Console.ReadLine());
+
+//            for (int i = 17; i <= stopN; i++)
+//            {
+//                PrintTopNum(i);
+//            }
+//        }
+
+//        static void PrintTopNum(int i)
+//        {
+//            if (GetSumOfN(i) == 8 || GetSumOfN(i) % 8 == 0)
+//            {
+//                if (GetCountOdd(i) > 0)
+//                {
+//                    int topN = i;
+//                    Console.WriteLine(topN);
+//                }
+//            }
+//        }
+
+//        static int GetSumOfN(int n) 
+//        {
+//            int sum = 0;
+//            while (n != 0)
+//            {
+//                int lastDigit = n % 10;
+//                n = n / 10;
+//                sum += lastDigit;
+//            }
+//            return sum;
+//        }
+
+//        static int GetCountOdd(int i) 
+//        {
+//            int counter = 0;
+//            while (i != 0)
+//            {
+//                int lastDigit = i % 10;
+//                if (lastDigit % 2 != 0)
+//                {
+//                    counter++;
+//                }
+//                i = i / 10;
+//            }
+//            return counter;
+//        }
+//    }
+//}
+   
