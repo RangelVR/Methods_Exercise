@@ -1,25 +1,16 @@
-﻿using System;
+int n = int.Parse(Console.ReadLine());
 
-namespace _07._NxN_Matrix
+for (int i = 0; i < n; i++)
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            int n = int.Parse(Console.ReadLine());
-            PrintNxNMatrix(n);
-        }
+    GerRowOfN(n);
+}
 
-        static void PrintNxNMatrix(int n) 
-        {
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    Console.Write(n + " ");
-                }
-                Console.WriteLine();
-            }
-        }
-    }
+
+void GerRowOfN(int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		Console.Write("{0} ", n);
+	}
+	Console.WriteLine();
 }
