@@ -122,8 +122,6 @@ bool IsHaveAtLeast2Digits()
 //}
 
 
-
-
 //bool ValidationBetwin6And10Chars(string password, bool isValid)
 //{
 //    isValid = password.Length >= 6 && password.Length <= 10;
