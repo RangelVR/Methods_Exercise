@@ -1,50 +1,42 @@
-﻿using System;
-using System.Linq;
+string password = Console.ReadLine();
 
-namespace _04._Password_Validator
+bool isValid = true;
+
+if (!IsContainBetwin6And10Chars())
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string password = Console.ReadLine();
-            PrintAssessmentPass(password);
-        }
+    Console.WriteLine("Password must be between 6 and 10 characters");
+    isValid = false;
+}
+if (!IsOnlyLettersAndDigits())
+{
+    Console.WriteLine("Password must consist only of letters and digits");
+    isValid = false;
+}
+if (!IsHaveAtLeast2Digits())
+{
+    Console.WriteLine("Password must have at least 2 digits");
+    isValid = false;
+}
+if (isValid)
+{
+    Console.WriteLine("Password is valid");
+}
 
-        static void PrintAssessmentPass(string pass) 
-        {
-            int digitCount = 0;
-            int digitOrLetter = 0;
-            foreach (var ch in pass)
-            {
-                if (char.IsDigit(ch))
-                {
-                    digitCount++;
-                }
-                if (!char.IsDigit(ch) && !char.IsLetter(ch))
-                {
-                    digitOrLetter++;
-                }               
-            }
 
-            if (pass.Length < 6 || pass.Length > 10)
-            {
-                Console.WriteLine("Password must be between 6 and 10 characters");
-            }
-            if (digitOrLetter != 0)
-            {
-                Console.WriteLine("Password must consist only of letters and digits");
-            }
-            if (digitCount < 2)
-            {
-                Console.WriteLine("Password must have at least 2 digits");
-            }
-            if (digitCount >= 2 && digitOrLetter == 0 && pass.Length >= 6 && pass.Length <= 10)
-            {
-                Console.WriteLine("Password is valid");
-            }
+bool IsContainBetwin6And10Chars()
+{
+    return password.Length >= 6 && password.Length <= 10;
+}
 
-        }
+bool IsOnlyLettersAndDigits()
+{
+    return password.All(char.IsLetterOrDigit);
+}
+
+bool IsHaveAtLeast2Digits()
+{
+    return password.Count(char.IsDigit) >= 2;
+}
   =====================================================================================================================      
         //    string password = Console.ReadLine();
         //    bool charCount = true;
@@ -173,41 +165,39 @@ namespace _04._Password_Validator
 
 =====================================================================================================================
 //string password = Console.ReadLine();
+//PrintAssessmentPass(password);
 
-//bool isValid = true;
+//static void PrintAssessmentPass(string pass)
+//{
+//    int digitCount = 0;
+//    int digitOrLetter = 0;
+//    foreach (var ch in pass)
+//    {
+//        if (char.IsDigit(ch))
+//        {
+//            digitCount++;
+//        }
+//        if (!char.IsDigit(ch) && !char.IsLetter(ch))
+//        {
+//            digitOrLetter++;
+//        }
+//    }
 
-//if (!IsContainBetwin6And10Chars())
-//{
-//    Console.WriteLine("Password must be between 6 and 10 characters");
-//    isValid = false;
-//}
-//if (!IsOnlyLettersAndDigits())
-//{
-//    Console.WriteLine("Password must consist only of letters and digits");
-//    isValid = false;
-//}
-//if (!IsHaveAtLeast2Digits())
-//{
-//    Console.WriteLine("Password must have at least 2 digits");
-//    isValid = false;
-//}
-//if (isValid)
-//{
-//    Console.WriteLine("Password is valid");
-//}
+//    if (pass.Length < 6 || pass.Length > 10)
+//    {
+//        Console.WriteLine("Password must be between 6 and 10 characters");
+//    }
+//    if (digitOrLetter != 0)
+//    {
+//        Console.WriteLine("Password must consist only of letters and digits");
+//    }
+//    if (digitCount < 2)
+//    {
+//        Console.WriteLine("Password must have at least 2 digits");
+//    }
+//    if (digitCount >= 2 && digitOrLetter == 0 && pass.Length >= 6 && pass.Length <= 10)
+//    {
+//        Console.WriteLine("Password is valid");
+//    }
 
-
-//bool IsContainBetwin6And10Chars()
-//{
-//    return password.Length >= 6 && password.Length <= 10;
-//}
-
-//bool IsOnlyLettersAndDigits()
-//{
-//    return password.All(char.IsLetterOrDigit);
-//}
-
-//bool IsHaveAtLeast2Digits()
-//{
-//    return password.Count(char.IsDigit) >= 2;
 //}
