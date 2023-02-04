@@ -74,3 +74,25 @@ namespace _02._Vowels_Count
         //}
     }
 }
+
+------------------------------------------------------------------------------------------------------
+//string input = Console.ReadLine();
+
+//Console.WriteLine(GetVowelsCount(input));
+
+
+
+//static int GetVowelsCount(string input)
+//{
+//	int count = 0;
+
+//	foreach (var ch in input)
+//	{
+//		if ("aeiouAEIOU".IndexOf(ch) >= 0)
+//		{
+//			count++;
+//		}
+//	}
+
+//    return count;
+//}
